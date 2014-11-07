@@ -14,12 +14,11 @@ public class CCTVPlayerDectection : MonoBehaviour
 
 		void OnTriggerStay (Collider other)
 		{
-				if (other == player) {
-						Vector3 relPos = player.transform.position - transform.position;
-						
+				if (other.gameObject == player) {
+						Vector3 relPos = player.transform.position - transform.position;					
 						RaycastHit hit;
-					
 						if (Physics.Raycast (transform.position, relPos, out hit)) {
+								
 								if (hit.collider.gameObject == player) {
 										lastPlayerSighting.position = player.transform.position;
 								}

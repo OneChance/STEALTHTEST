@@ -16,7 +16,7 @@ public class SceneFadeInOut : MonoBehaviour
 		void Update ()
 		{
 				if (sceneStarting) {
-						FadeToClear ();
+						StartScene ();
 				}
 		}
 
