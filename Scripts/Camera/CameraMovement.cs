@@ -35,8 +35,7 @@ public class CameraMovement : MonoBehaviour
 						}
 				}
 			
-				Debug.DrawLine (newPos, player.position, Color.red);
-
+				//Debug.DrawLine (newPos, player.position, Color.red);
 				transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime);
 				smoothLookAt ();
 		}
