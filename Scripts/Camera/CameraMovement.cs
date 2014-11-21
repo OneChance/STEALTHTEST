@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
 		{
 				player = GameObject.FindGameObjectWithTag (Tags.player).transform;
 				relPos = transform.position - player.position;
-				relDistance = relPos.magnitude;  //-0.5f
+				relDistance = relPos.magnitude - 0.5f; 
 		}
 
 		void FixedUpdate ()
@@ -34,8 +34,7 @@ public class CameraMovement : MonoBehaviour
 								break;
 						}
 				}
-			
-				//Debug.DrawLine (newPos, player.position, Color.red);
+
 				transform.position = Vector3.Lerp (transform.position, newPos, smooth * Time.deltaTime);
 				smoothLookAt ();
 		}
@@ -43,12 +42,12 @@ public class CameraMovement : MonoBehaviour
 		bool CheckPos (Vector3 checkPoint)
 		{
 				RaycastHit hit;
-				if (Physics.Raycast (checkPoint, player.position - checkPoint, out hit)) {
-						if (hit.transform != player) {
+				
+				if (Physics.Raycast (checkPoint, player.position - checkPoint, out hit, relDistance)) {
+						if (hit.transform.gameObject.tag == Tags.sceneObject) {
 								return false;
-						} 
+						} 						
 				}
-
 				return true;
 		}
 
