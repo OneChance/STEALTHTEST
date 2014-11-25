@@ -50,9 +50,7 @@ public class EnemySight : MonoBehaviour
 						playerInSight = false;
 					
 						Vector3 direction = player.transform.position - transform.position;
-						float angle = Vector3.Angle (direction, Vector3.forward);
-					
-					
+						float angle = Vector3.Angle (direction, transform.forward);
 
 						if (angle < fieldOfViewAngle * 0.5f) {
 								RaycastHit hit;
@@ -62,6 +60,8 @@ public class EnemySight : MonoBehaviour
 										}
 								}
 						}
+
+						
 
 						int playerLayerZeroStateHash = playerAnim.GetCurrentAnimatorStateInfo (0).nameHash;
 						int playerLayerOneStateHash = playerAnim.GetCurrentAnimatorStateInfo (1).nameHash;
